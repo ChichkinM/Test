@@ -6,12 +6,18 @@ using namespace std;
 
 int globalValue = 50;
 
+
 Variables::Variables()
 {
     protectedVal = 5;
 
     id++;
     value = 5;
+}
+
+void Variables::arrayChangeVal(int array[2])
+{
+    array[0] -= 1;
 }
 
 void Variables::showValues()

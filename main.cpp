@@ -4,6 +4,9 @@
 #include "graph.h"
 #include "memory.h"
 #include "exception.h"
+#include "simplelist.h"
+#include "map.h"
+#include "sort.h"
 
 using namespace std;
 
@@ -12,18 +15,56 @@ void functionsTest();
 void graphTest();
 void memTest();
 void exceptionTest();
+void simpleList();
+void mapTest();
+void sortTest();
+
+
 
 int main(int argc, char *argv[])
 {
-    cout << "Hello World!" << endl;
+    for(int i = 0; i < argc; i++)
+        cout << argv[i] << endl;
+    cout << endl;
 
-    //    variablesTest();
-    functionsTest();
+    //            variablesTest();
+    //    functionsTest();
     //    memTest();
     //    exceptionTest();
     //    graphTest();
+    //    simpleList();
+
+//    mapTest();
+
+    sortTest();
+
 
     return 0;
+}
+
+void mapTest()
+{
+    Map m;
+}
+
+void sortTest()
+{
+    int arr[8] { 2, 1, 3, 7, 8, 5, 10, 9 };
+
+    Sort::treeSort(arr, 8);
+}
+
+void simpleList()
+{
+    SimpleList list;
+
+    list.show();
+
+    list.push_down(5);
+    list.push_down(7);
+    list.push_down(255);
+
+    list.show();
 }
 
 void exceptionTest()
@@ -75,21 +116,21 @@ void functionsTest()
     int localArg = 5;
 
     // тут фактические параметры
-//    f->func_val(localArg); // передача по значению (копирование аргумента)
-//    f->func_link(localArg); // передача по ссылке
-//    f->func_pointer(&localArg); // передача по указателю (копирование указателя)
+    //    f->func_val(localArg); // передача по значению (копирование аргумента)
+    //    f->func_link(localArg); // передача по ссылке
+    //    f->func_pointer(&localArg); // передача по указателю (копирование указателя)
 
     cout << "localArg " << localArg << endl;
 
-//    function_namespace::Functions::staticFunc();
-//    cout << "using friend function " << getPrivateVal(f) << endl;
+    //    function_namespace::Functions::staticFunc();
+    //    cout << "using friend function " << getPrivateVal(f) << endl;
 
     f->hello();
 
     delete f;
 }
 
-int Variables::id = 0;
+int Variables::id;
 void variablesTest()
 {
     extern int globalValue;
@@ -104,4 +145,9 @@ void variablesTest()
         Variables newVar;
         cout << "new variables id (using static in class)" << Variables::id << endl;
     }
+
+    int array[2] = {5, 3};
+    v.arrayChangeVal(array);
+
+    cout << array[0] << " " << array[1] << endl;
 }

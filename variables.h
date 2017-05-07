@@ -19,6 +19,7 @@ public:
     void showValues();
 
     static int id;
+    void arrayChangeVal(int array[]);
 };
 
 #endif // VARIABLES_H
